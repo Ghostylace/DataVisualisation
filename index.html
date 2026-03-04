@@ -1,24 +1,58 @@
 <!DOCTYPE html>
-<html lang="en" style="font-family: sans-serif;">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="jQuery.js"></script>
-    <script src="script.js"></script>
+    <title>Global Unemployment Insights</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="style.css">
-    <title>Nelio</title>
 </head>
 <body>
-    <div id="dataTableDiv">
-        <table id="dataTable">
+
+    <aside id="dataTableDiv">
+    <h2>Global Data</h2>
+    <div class="search-container">
+        <input type="text" id="countrySearch" placeholder="Search country or ID...">
+    </div>
+    
+    <table id="dataTable">
         <thead>
-            <th id="dataTableCId">Country Id</th>
-            <th id="dataTableCName">Country name</th>
+            <tr>
+                <th id="dataTableCId">ID</th>
+                <th id="dataTableCName">Country Name</th>
+            </tr>
         </thead>
         <tbody id="dataTableBody">
-        </tbody>
+            </tbody>
     </table>
+</aside>
+
+    <div class="container">
+        <aside id="dataTableDiv">
+            <h2>Countries</h2>
+            <table id="dataTable">
+                <thead>
+                    <tr>
+                        <th id="dataTableCId">ID</th>
+                        <th id="dataTableCName">Country Name</th>
+                    </tr>
+                </thead>
+                <tbody id="dataTableBody">
+                    </tbody>
+            </table>
+        </aside>
+
+        <main id="dataChartDiv">
+            <header>
+                <h1 id="countryTitle">Select a Country</h1>
+                <p>Total Unemployment (% of total labor force)</p>
+            </header>
+            <div class="chart-container">
+                <canvas id="unemploymentChart"></canvas>
+            </div>
+        </main>
     </div>
-    <div id="dataChartDiv"></div>
+    <script src="script.js"></script>
 </body>
 </html>

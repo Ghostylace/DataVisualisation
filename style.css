@@ -1,26 +1,92 @@
-body{
-    padding: 0;
+:root {
+    --primary: #2563eb;
+    --bg: #f8fafc;
+    --sidebar-bg: #ffffff;
+    --border: #e2e8f0;
+}
+
+body {
     margin: 0;
+    font-family: 'Inter', system-ui, sans-serif;
+    background-color: var(--bg);
 }
-#dataChartDiv{
-    position: absolute;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    left: 30vw;
-}
-#dataTable{
-    font-size: 12px;
-}
-#dataTableDiv{
-    min-width: 250px;
-    width: 30vw;
+
+.container {
+    display: flex;
     height: 100vh;
-    overflow: scroll;
 }
-#dataTableCId{
-    padding-right: 10px;
+
+#dataTableDiv {
+    width: 350px;
+    background: var(--sidebar-bg);
+    border-right: 1px solid var(--border);
+    overflow-y: auto;
+    padding: 20px;
 }
-#dataTableCName{
+
+#dataTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#dataTable th {
     text-align: left;
+    color: #64748b;
+    font-size: 12px;
+    text-transform: uppercase;
+    padding-bottom: 10px;
+}
+
+#dataTableBody tr {
+    cursor: pointer;
+    border-bottom: 1px solid #f1f5f9;
+    transition: background 0.2s;
+}
+
+#dataTableBody tr:hover {
+    background: #eff6ff;
+}
+
+#dataTableBody td {
+    padding: 12px 8px;
+    font-size: 14px;
+}
+
+#dataChartDiv {
+    flex-grow: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.chart-container {
+    flex-grow: 1;
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}
+
+.search-container {
+    position: sticky;
+    top: 0;
+    background: white;
+    padding-bottom: 15px;
+    z-index: 10;
+}
+
+#countrySearch {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+}
+
+#countrySearch:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
