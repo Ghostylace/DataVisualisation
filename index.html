@@ -3,39 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Global Unemployment Insights</title>
+    <title>Data Explorer - Search</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-        <aside id="dataTableDiv">
-            <h2>Countries</h2>
-            <div class="search-container">
-                <input type="text" id="countrySearch" placeholder="Search country or ID...">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand fw-bold" href="#">Homelessness<span class="text-primary">Data</span></a>
+            <div class="navbar-nav">
+                <a class="nav-link active" href="index.html">Country Search</a>
+                <a class="nav-link" href="continents.html">Continent Insights</a>
             </div>
-            <table id="dataTable">
+        </div>
+    </nav>
+
+    <div class="app-container">
+        <aside id="dataTableDiv">
+            <div class="search-container">
+                <input type="text" id="countrySearch" class="form-control" placeholder="Search 200+ countries...">
+            </div>
+            <table id="dataTable" class="table table-hover">
                 <thead>
                     <tr>
-                        <th id="dataTableCId">ID</th>
-                        <th id="dataTableCName">Country Name</th>
+                        <th>ID</th>
+                        <th>Country Name</th>
                     </tr>
                 </thead>
-                <tbody id="dataTableBody">
-                    </tbody>
+                <tbody id="dataTableBody"></tbody>
             </table>
         </aside>
 
         <main id="dataChartDiv">
-            <header>
-                <h1 id="countryTitle">Select a Country</h1>
-                <p>Total Unemployment (% of total labor force)</p>
-            </header>
-            <div class="chart-container">
+            <div class="chart-header p-4">
+                <h1 id="countryTitle" class="h3">Select a country from the list</h1>
+                <p class="text-muted">Unemployment, total (% of total labor force)</p>
+            </div>
+            <div class="chart-wrapper mx-4 p-4 bg-white shadow-sm rounded">
                 <canvas id="unemploymentChart"></canvas>
             </div>
         </main>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>

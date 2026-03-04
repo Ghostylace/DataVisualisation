@@ -1,96 +1,120 @@
+/* 1. Global Styles & Variables */
 :root {
-    --primary: #2563eb;
-    --bg: #f8fafc;
-    --sidebar-bg: #ffffff;
-    --border: #e2e8f0;
+    --primary: #0d6efd;
+    --dark-bg: #1e293b;
+    --light-bg: #f8fafc;
+    --border: #dee2e6;
 }
 
-body {
+html, body {
+    height: 100%;
     margin: 0;
-    font-family: 'Inter', system-ui, sans-serif;
-    background-color: var(--bg);
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background-color: var(--light-bg);
 }
 
-.container {
+/* 2. Common Components */
+.navbar {
+    background: var(--dark-bg);
+    color: white;
+    padding: 0.5rem 2rem;
+    z-index: 1000;
+}
+
+.card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+    border: none;
+    height: 100%;
+}
+
+h3, .h3 {
+    margin-top: 0;
+    color: #334155;
+    font-weight: 600;
+}
+
+/* 3. SEARCH PAGE LAYOUT (index.html) */
+/* This specific container prevents the whole window from scrolling */
+.app-container {
     display: flex;
-    height: 100vh;
+    height: calc(100vh - 56px); /* Fill remaining height */
+    overflow: hidden; 
 }
 
 #dataTableDiv {
-    min-width: 250px;
-    width: 30vw;
-    height: calc(100vh - 40px);
-    background: var(--sidebar-bg);
+    width: 350px;
+    background: #ffffff;
     border-right: 1px solid var(--border);
-    overflow: scroll;
-    padding: 20px;
-}
-
-#dataTable {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-#dataTable th {
-    text-align: left;
-    color: #64748b;
-    font-size: 12px;
-    text-transform: uppercase;
-    padding-bottom: 10px;
-}
-
-#dataTableBody tr {
-    cursor: pointer;
-    border-bottom: 1px solid #f1f5f9;
-    transition: background 0.2s;
-}
-
-#dataTableBody tr:hover {
-    background: #eff6ff;
-}
-
-#dataTableBody td {
-    padding: 12px 8px;
-    font-size: 14px;
-}
-
-#dataChartDiv {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: calc(30vw + 40px);
-    padding: 40px;
-}
-
-.chart-container {
-    flex-grow: 1;
-    background: white;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    overflow-y: auto; /* Internal scroll for country list */
+    padding: 15px;
 }
 
 .search-container {
     position: sticky;
     top: 0;
     background: white;
+    z-index: 5;
     padding-bottom: 15px;
-    z-index: 10;
 }
 
-#countrySearch {
-    width: 100%;
-    padding: 10px 12px;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    font-size: 14px;
-    outline: none;
-    box-sizing: border-box;
-    transition: border-color 0.2s;
+#dataChartDiv {
+    flex: 1;
+    background: var(--light-bg);
+    overflow-y: auto; /* Allows chart area to scroll if content grows */
+    padding: 20px;
 }
 
-#countrySearch:focus {
-    border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+.chart-wrapper {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+    min-height: 450px;
+}
+
+/* Table Hover Effects */
+#dataTableBody tr { cursor: pointer; transition: background 0.2s; }
+#dataTableBody tr:hover { background-color: #f1f7ff; }
+
+/* 4. CONTINENT PAGE LAYOUT (continents.html) */
+/* This container allows the whole page to scroll naturally */
+.dashboard-container {
+    padding: 30px 20px;
+    max-width: 1400px;
+    margin: auto;
+    /* No overflow:hidden here! */
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 24px;
+}
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+.chart-box {
+    height: 350px;
+    position: relative;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .app-container {
+        flex-direction: column;
+        height: auto;
+        overflow: visible;
+    }
+    #dataTableDiv {
+        width: 100%;
+        height: 300px;
+    }
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
 }
