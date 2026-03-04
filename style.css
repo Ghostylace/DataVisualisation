@@ -66,27 +66,3 @@ body {
     border-radius: 12px;
     box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
 }
-
-.search-container {
-    position: sticky;
-    top: 0;
-    background: white;
-    padding-bottom: 15px;
-    z-index: 10;
-}
-
-#countrySearch {
-    width: 100%;
-    padding: 10px 12px;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    font-size: 14px;
-    outline: none;
-    box-sizing: border-box;
-    transition: border-color 0.2s;
-}
-
-#countrySearch:focus {
-    border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-}

@@ -70,19 +70,3 @@ function updateChart(countryId, countryName) {
         }
     });
 }
-
-// Add this inside your window "load" listener or at the bottom of your script
-document.getElementById('countrySearch').addEventListener('input', function(e) {
-    const term = e.target.value.toLowerCase();
-    const rows = document.querySelectorAll('#dataTableBody tr');
-
-    rows.forEach(row => {
-        // Search in both the ID and the Name columns
-        const text = row.textContent.toLowerCase();
-        if (text.includes(term)) {
-            row.style.display = ""; // Show
-        } else {
-            row.style.display = "none"; // Hide
-        }
-    });
-});
