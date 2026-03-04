@@ -1,0 +1,19 @@
+body{
+    padding: 0;
+    margin: 0;
+}
+#dataTable{
+    font-size: 12px;
+}
+#dataTableDiv{
+    min-width: 250px;
+    width: 30vw;
+    height: 100vh;
+    overflow: scroll;
+}
+#dataTableCId{
+    padding-right: 10px;
+}
+#dataTableCName{
+    text-align: left;
+}
