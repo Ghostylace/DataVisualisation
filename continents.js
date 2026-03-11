@@ -12,13 +12,12 @@ const continentGroups = {
 const colors = ['#2563eb', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#06b6d4', '#6366f1'];
 
 window.addEventListener("load", () => {
-    loadSummary(); // This is your "Big One" - logic stays the same
+    loadSummary();
     for (let continent in continentGroups) {
         loadContinentPieChart(continent, continentGroups[continent]);
     }
 });
 
-// The "Big One" Summary Chart (Keeping as Pie per your previous request)
 async function loadSummary() {
     const regions = { "N. America": "NAC", "EU": "EUU", "Asia": "EAS", "LatAm": "LCN", "Africa": "SSF" };
     const values = [];
@@ -48,7 +47,7 @@ async function loadSummary() {
     });
 }
 
-// THE NEW PIE CHARTS FOR CONTINENTS
+// NEW PIE CHARTS FOR CONTINENTS
 async function loadContinentPieChart(elementId, countryCodes) {
     const values = [];
     const labels = [];

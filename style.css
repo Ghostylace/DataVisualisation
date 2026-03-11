@@ -63,7 +63,7 @@ h3, .h3 {
 #dataChartDiv {
     flex: 1;
     background: var(--light-bg);
-    overflow-y: auto; /* Allows chart area to scroll if content grows */
+    overflow-y: hidden; /* Allows chart area to scroll if content grows */
     padding: 20px;
 }
 
@@ -83,7 +83,7 @@ h3, .h3 {
 /* This container allows the whole page to scroll naturally */
 .dashboard-container {
     padding: 30px 20px;
-    max-width: 1400px;
+    max-width: 100vw;
     margin: auto;
     /* No overflow:hidden here! */
 }
