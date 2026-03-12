@@ -53,18 +53,15 @@ h3, .h3 {
 }
 
 .search-container {
-    position: sticky;
-    top: 0;
     background: white;
     z-index: 5;
-    padding-bottom: 15px;
+    padding: 15px;
 }
 
 #dataChartDiv {
     flex: 1;
     background: var(--light-bg);
-    overflow-y: hidden; /* Allows chart area to scroll if content grows */
-    padding: 20px;
+    overflow: hidden;
 }
 
 .chart-wrapper {

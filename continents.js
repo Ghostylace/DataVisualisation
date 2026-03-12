@@ -31,10 +31,11 @@ async function loadSummary() {
     }
 
     new Chart(document.getElementById('summaryChart'), {
-        type: 'pie', 
+        type: 'bar',
         data: {
             labels,
             datasets: [{
+                label: "Percentage",
                 data: values,
                 backgroundColor: colors,
                 hoverOffset: 15
@@ -66,10 +67,11 @@ async function loadContinentPieChart(elementId, countryCodes) {
     }
 
     new Chart(document.getElementById(`chart-${elementId}`), {
-        type: 'pie',
+        type: 'bar',
         data: {
             labels: labels,
             datasets: [{
+                label: "Percentage",
                 data: values,
                 backgroundColor: colors,
                 borderWidth: 1
