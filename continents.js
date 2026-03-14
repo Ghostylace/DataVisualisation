@@ -14,12 +14,12 @@ const colors = ['#2563eb', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6', '#06b6d4'
 window.addEventListener("load", () => {
     loadSummary();
     for (let continent in continentGroups) {
-        loadContinentPieChart(continent, continentGroups[continent]);
+        loadContinentChart(continent, continentGroups[continent]);
     }
 });
 
 async function loadSummary() {
-    const regions = { "N. America": "NAC", "EU": "EUU", "Asia": "EAS", "LatAm": "LCN", "Africa": "SSF" };
+    const regions = { "North America": "NAC", "European Union": "EUU", "East Asia": "EAS", "South America": "LCN", "Africa": "SSF" };
     const values = [];
     const labels = Object.keys(regions);
 
@@ -35,21 +35,39 @@ async function loadSummary() {
         data: {
             labels,
             datasets: [{
-                label: "Percentage",
                 data: values,
-                backgroundColor: colors,
-                hoverOffset: 15
+                backgroundColor: colors
             }]
         },
         options: {
+            responsive: true,
             maintainAspectRatio: false,
-            plugins: { legend: { position: 'right' } }
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'bottom',
+                    labels: {
+                        padding: 20,
+                        generateLabels: (chart) => {
+                            return chart.data.labels.map((label, i) => ({
+                                text: label,
+                                fillStyle: chart.data.datasets[0].backgroundColor[i],
+                                strokeStyle: chart.data.datasets[0].backgroundColor[i],
+                                lineWidth: 0
+                            }));
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: { display: false },
+                y: { beginAtZero: true }
+            }
         }
     });
 }
 
-// NEW PIE CHARTS FOR CONTINENTS
-async function loadContinentPieChart(elementId, countryCodes) {
+async function loadContinentChart(elementId, countryCodes) {
     const values = [];
     const labels = [];
 
@@ -57,13 +75,12 @@ async function loadContinentPieChart(elementId, countryCodes) {
         try {
             const res = await fetch(`${API_BASE}${code}${INDICATOR}`);
             const json = await res.json();
-            // Get only the most recent value
             const recent = json[1].find(d => d.value !== null);
             if (recent) {
-                labels.push(code); // Using Country Code as label
+                labels.push(recent.country.value);
                 values.push(recent.value);
             }
-        } catch (e) { console.error("Error fetching " + code, e); }
+        } catch (e) { console.error(e); }
     }
 
     new Chart(document.getElementById(`chart-${elementId}`), {
@@ -71,7 +88,6 @@ async function loadContinentPieChart(elementId, countryCodes) {
         data: {
             labels: labels,
             datasets: [{
-                label: "Percentage",
                 data: values,
                 backgroundColor: colors,
                 borderWidth: 1
@@ -79,11 +95,29 @@ async function loadContinentPieChart(elementId, countryCodes) {
         },
         options: {
             responsive: true,
+            maintainAspectRatio: true,
             plugins: {
                 legend: {
+                    display: true,
                     position: 'bottom',
-                    labels: { boxWidth: 12, font: { size: 10 } }
+                    labels: {
+                        boxWidth: 12,
+                        font: { size: 10 },
+                        padding: 15,
+                        generateLabels: (chart) => {
+                            return chart.data.labels.map((label, i) => ({
+                                text: label,
+                                fillStyle: chart.data.datasets[0].backgroundColor[i],
+                                strokeStyle: chart.data.datasets[0].backgroundColor[i],
+                                lineWidth: 0
+                            }));
+                        }
+                    }
                 }
+            },
+            scales: {
+                x: { display: false },
+                y: { beginAtZero: true }
             }
         }
     });
