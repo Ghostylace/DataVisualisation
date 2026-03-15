@@ -4,7 +4,7 @@ const INDICATOR = "/indicator/SL.UEM.TOTL.ZS?format=json&per_page=50";
 const continentGroups = {
     "NorthAmerica": ["USA", "CAN", "MEX"],
     "Europe": ["DEU", "FRA", "GBR", "ESP", "ITA", "NLD", "BEL"],
-    "Asia": ["JPN", "CHN", "IND", "KOR", "VNM", "THA", "IDN"],
+    "Asia": ["JPN", "CHN", "IND", "THA", "IDN"],
     "SouthAmerica": ["BRA", "ARG", "COL", "CHL", "PER", "ECU"],
     "Africa": ["ZAF", "NGA", "EGY", "KEN", "ETH", "MAR", "GHA"]
 };
@@ -19,7 +19,7 @@ window.addEventListener("load", () => {
 });
 
 async function loadSummary() {
-    const regions = { "North America": "NAC", "European Union": "EUU", "East Asia": "EAS", "South America": "LCN", "Africa": "SSF" };
+    const regions = { "North America": "NAC", "Europe": "EUU", "Asia": "EAS", "South America": "LCN", "Africa": "SSF" };
     const values = [];
     const labels = Object.keys(regions);
 
